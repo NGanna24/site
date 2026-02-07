@@ -280,7 +280,7 @@
 
 
                 <a href="{{ asset('visiteur/assets/img/masonry-portfolio/solution-de-ivraison.jpeg') }}" title="Site Vitrine" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                <a href="{{ route('services.show', 'developpement-web-mobile') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                <a href="{{ route('services.detail') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
             </div><!-- End Portfolio Item -->
 
