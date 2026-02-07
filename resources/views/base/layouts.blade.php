@@ -32,7 +32,7 @@
       --primary: #ec681d;
       --primary-dark: #ec681d;
       --secondary: #ec691dde;
-      --accent: #f59f0be1;
+      --accent: #ec681d;
       --dark: #1e293b;
       --light: #f8fafc;
       --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -204,23 +204,8 @@
       color: white;
     }
 
-    .btn-accent {
-      background: var(--accent);
-      border: none;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-weight: 600;
-      color: white;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
 
-    .btn-accent:hover {
-      background: #e6900b;
-      transform: translateY(-2px);
-      color: white;
-    }
+
 
     .btn-get-started {
       background: var(--gradient);

@@ -8,7 +8,7 @@
 
 /*--------------------------------------------------------------
 # Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
+# Help: https://bootstrapmade.com/color-system/ 
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
@@ -968,7 +968,7 @@ section,
 
 @media (min-width: 991px) {
   .about .inner-title {
-    max-width: 65%;
+    max-width: 60%;
     margin: 0 0 80px 0;
   }
 }
