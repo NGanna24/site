@@ -8,11 +8,11 @@
 @section('og-site-name', 'Mi-Gban by NDOUBLE')
 @section('og-title', 'Mi-Gban - Application Immobilière en Côte d\'Ivoire')
 @section('og-description', 'Trouvez, louez ou vendez votre bien en quelques clics. L\'application qui révolutionne l\'immobilier en Côte d\'Ivoire.')
-@section('og-image', asset('visiteur/assets/img/logo.png'))
+@section('og-image', asset('visiteur/assets/img/logo-migban.png'))
 
 {{-- Favicon Mi-Gban --}}
-@section('favicon', asset('visiteur/assets/img/logo.png'))
-@section('apple-touch-icon', asset('visiteur/assets/img/logo.png'))
+@section('favicon', asset('visiteur/assets/img/logo-migban.png'))
+@section('apple-touch-icon', asset('visiteur/assets/img/logo-migban.png'))
 
 @section('body-class', 'mi-gban-page')
 
