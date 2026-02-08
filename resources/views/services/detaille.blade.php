@@ -3,7 +3,7 @@
 
 <main class="main">
 
-  <!-- Hero Section pour Mi-Gban -->
+  <!-- Hero Section pour Mi-Gban --> 
   <section id="hero-migban" class="hero section" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
     <div class="container">
       <div class="row align-items-center">
