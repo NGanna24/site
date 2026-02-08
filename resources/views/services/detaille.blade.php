@@ -4,18 +4,17 @@
 
 @section('description', 'Mi-Gban révolutionne l\'immobilier en Côte d\'Ivoire. Trouvez, louez ou vendez votre bien facilement. Téléchargez l\'application maintenant !')
 
-@section('body-class', 'mi-gban-page')
+{{-- Meta Open Graph pour Mi-Gban --}}
+@section('og-site-name', 'Mi-Gban by NDOUBLE')
+@section('og-title', 'Mi-Gban - Application Immobilière en Côte d\'Ivoire')
+@section('og-description', 'Trouvez, louez ou vendez votre bien en quelques clics. L\'application qui révolutionne l\'immobilier en Côte d\'Ivoire.')
+@section('og-image', asset('visiteur/assets/img/migban/share-preview.jpg'))
 
-@section('meta-og-override')
-  {{-- Meta spécifiques à Mi-Gban qui remplacent celles par défaut --}}
-  <meta property="og:title" content="Mi-Gban - Application Immobilière en Côte d'Ivoire">
-  <meta property="og:description" content="Trouvez, louez ou vendez votre bien en quelques clics. L'application qui révolutionne l'immobilier en Côte d'Ivoire.">
-  <meta property="og:image" content="{{ asset('visiteur/assets/img/migban/share-preview.jpg') }}">
-  
-  <meta name="twitter:title" content="Mi-Gban - Application Immobilière">
-  <meta name="twitter:description" content="Découvrez l'application immobilière révolutionnaire pour la Côte d'Ivoire">
-  <meta name="twitter:image" content="{{ asset('visiteur/assets/img/migban/share-preview.jpg') }}">
-@endsection
+{{-- Favicon Mi-Gban --}}
+@section('favicon', asset('visiteur/assets/img/migban/favicon.png'))
+@section('apple-touch-icon', asset('visiteur/assets/img/migban/apple-touch-icon.png'))
+
+@section('body-class', 'mi-gban-page')
 
 @section('page-styles')
 <style>
