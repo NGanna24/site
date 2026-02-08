@@ -4,14 +4,43 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>NDOUBLE - Agence Digitale & Solutions IT Innovantes</title>
-  <meta name="description" content="NDOUBLE - Agence digitale spécialisée en développement web, applications mobiles, design UX/UI et solutions informatiques innovantes à Bouaké">
+  
+  {{-- Titre dynamique --}}
+  <title>@yield('title', 'NDOUBLE - Agence Digitale & Solutions IT Innovantes')</title>
+  
+  {{-- Meta description dynamique --}}
+  <meta name="description" content="@yield('description', 'NDOUBLE - Agence digitale spécialisée en développement web, applications mobiles, design UX/UI et solutions informatiques innovantes à Bouaké')">
+  
+  {{-- Meta Open Graph par défaut (NDOUBLE) --}}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NDOUBLE">
+  <meta property="og:locale" content="fr_CI">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:title" content="NDOUBLE - Agence Digitale & Solutions IT Innovantes">
+  <meta property="og:description" content="Agence digitale spécialisée en développement web, applications mobiles, design UX/UI et solutions informatiques innovantes à Bouaké">
+  <meta property="og:image" content="{{ asset('visiteur/assets/img/og-default.jpg') }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  
+  {{-- Twitter Card par défaut (NDOUBLE) --}}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ndouble_ci">
+  <meta name="twitter:creator" content="@ndouble_ci">
+  <meta name="twitter:title" content="NDOUBLE - Agence Digitale">
+  <meta name="twitter:description" content="Solutions digitales innovantes pour votre transformation numérique">
+  <meta name="twitter:image" content="{{ asset('visiteur/assets/img/logo.png') }}">
+  
+  {{-- Ces meta seront écrasés par Mi-Gban si besoin --}}
+  @yield('meta-og-override')
+  
   <meta name="keywords" content="agence digitale, développement web, applications mobiles, design UX/UI, solutions IT, transformation numérique, Bouaké, Côte d'Ivoire">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <!-- Favicons -->
-  <link href="{{ asset('visiteur/assets/img/favicon.png') }}" rel="icon">
+  
+  {{-- Favicon NDOUBLE par défaut --}}
+  <link href="{{ asset('visiteur/assets/img/favicon.png') }}" rel="icon" id="default-favicon">
   <link href="{{ asset('visiteur/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
-
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -26,6 +55,12 @@
 
   <!-- Main CSS File -->
   <link href="{{ asset('visiteur/assets/css/main.css') }}" rel="stylesheet">
+  
+  {{-- Font Awesome --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  {{-- Styles spécifiques --}}
+  @yield('page-styles')
 
   <style>
     :root {
@@ -203,9 +238,6 @@
       box-shadow: 0 10px 20px rgba(236, 104, 29, 0.2);
       color: white;
     }
-
-
-
 
     .btn-get-started {
       background: var(--gradient);
@@ -516,22 +548,94 @@
     section[id] {
       scroll-margin-top: 80px;
     }
+    
+    /* ===== STYLES POUR LE PARTAGE ===== */
+    .social-share-btn {
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 12px 20px;
+    }
+    
+    .social-share-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-facebook {
+      background: #1877F2;
+      color: white;
+    }
+    
+    .btn-twitter {
+      background: #1DA1F2;
+      color: white;
+    }
+    
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+    
+    .btn-linkedin {
+      background: #0077B5;
+      color: white;
+    }
+    
+    .btn-copy {
+      background: #6c757d;
+      color: white;
+    }
+    
+    .btn-copy:hover {
+      background: #5a6268;
+    }
+    
+    /* Copy message */
+    .copy-message {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    /* Styles pour Mi-Gban */
+    .mi-gban-theme .btn-primary {
+      background: linear-gradient(135deg, #ec681d 0%, #d45810 100%);
+    }
   </style>
 </head>
 
-<body class="index-page">
+<body class="index-page @yield('body-class')">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center">
       
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <img src="visiteur/assets/img/logo.png" alt="NDOUBLE Logo" style="max-height: 40px;">
+      <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto">
+        <img src="{{ asset('visiteur/assets/img/logo.png') }}" alt="NDOUBLE Logo" style="max-height: 40px;">
         <span class="ms-2">NDOUBLE</span>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Accueil</a></li>
+          <li><a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Accueil</a></li>
           <li><a href="#about">À Propos</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Réalisations</a></li>
@@ -558,7 +662,7 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="{{ url('/') }}" class="logo d-flex align-items-center">
             <span class="sitename">NDOUBLE</span>
           </a>
           <div class="footer-contact pt-3">
@@ -578,7 +682,7 @@
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Navigation</h4>
           <ul>
-            <li><a href="#hero">Accueil</a></li>
+            <li><a href="{{ url('/') }}">Accueil</a></li>
             <li><a href="#about">À propos</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#portfolio">Réalisations</a></li>
@@ -643,8 +747,252 @@
   <script src="{{ asset('visiteur/assets/js/main.js') }}"></script>
 
   <script>
-    // Mobile Navigation Toggle
-    document.addEventListener('DOMContentLoaded', function() {
+    // Configuration globale
+    const APP_CONFIG = {
+      isMiGbanPage: function() {
+        return window.location.pathname.includes('migban') || 
+               document.title.includes('Mi-Gban') ||
+               document.querySelector('#hero-migban') !== null ||
+               document.querySelector('#migban-page') !== null;
+      },
+      
+      getCurrentPageType: function() {
+        if (this.isMiGbanPage()) {
+          return 'migban';
+        }
+        return 'ndouble';
+      },
+      
+      getShareConfig: function() {
+        const pageType = this.getCurrentPageType();
+        
+        if (pageType === 'migban') {
+          return {
+            url: window.location.href,
+            title: "Mi-Gban - Application Immobilière en Côte d'Ivoire",
+            description: "Trouvez, louez ou vendez votre bien en quelques clics. L'application qui révolutionne l'immobilier en Côte d'Ivoire.",
+            hashtags: "MiGban,Immobilier,CoteIvoire,NDOUBLE",
+            image: "{{ asset('visiteur/assets/img/migban/share-preview.jpg') }}",
+            favicon: "{{ asset('visiteur/assets/img/migban/mi-gban-favicon.png') }}",
+            appleTouch: "{{ asset('visiteur/assets/img/migban/mi-gban-logo.png') }}"
+          };
+        } else {
+          return {
+            url: window.location.href,
+            title: document.title,
+            description: document.querySelector('meta[name="description"]')?.content || "NDOUBLE - Agence Digitale & Solutions IT Innovantes",
+            hashtags: "NDOUBLE,DigitalSolutions,AgenceDigitale",
+            image: "{{ asset('visiteur/assets/img/logo.png') }}",
+            favicon: "{{ asset('visiteur/assets/img/favicon.png') }}",
+            appleTouch: "{{ asset('visiteur/assets/img/apple-touch-icon.png') }}"
+          };
+        }
+      }
+    };
+
+    // Système de favicon intelligent
+    class SmartFavicon {
+      constructor() {
+        this.config = APP_CONFIG.getShareConfig();
+        this.pageType = APP_CONFIG.getCurrentPageType();
+      }
+      
+      async init() {
+        console.log(`🌐 Page détectée: ${this.pageType.toUpperCase()}`);
+        
+        // Vérifier si le favicon spécifique existe
+        const faviconExists = await this.checkImageExists(this.config.favicon);
+        
+        if (faviconExists && this.pageType === 'migban') {
+          await this.setFavicon(this.config.favicon, this.config.appleTouch);
+          console.log('✅ Favicon Mi-Gban appliqué');
+        } else {
+          console.log('✅ Favicon NDOUBLE appliqué (par défaut)');
+          // Le favicon NDOUBLE est déjà défini dans le HTML
+        }
+      }
+      
+      checkImageExists(url) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = url;
+        });
+      }
+      
+      async setFavicon(faviconUrl, appleTouchUrl) {
+        // Mettre à jour le favicon standard
+        let link = document.querySelector("link[rel*='icon']");
+        if (!link) {
+          link = document.createElement('link');
+          link.rel = 'icon';
+          document.head.appendChild(link);
+        }
+        link.href = faviconUrl;
+        
+        // Mettre à jour l'apple touch icon
+        let appleLink = document.querySelector("link[rel*='apple-touch-icon']");
+        if (!appleLink) {
+          appleLink = document.createElement('link');
+          appleLink.rel = 'apple-touch-icon';
+          document.head.appendChild(appleLink);
+        }
+        appleLink.href = appleTouchUrl;
+      }
+    }
+
+    // Système de partage intelligent
+    class SmartShare {
+      constructor() {
+        this.config = APP_CONFIG.getShareConfig();
+      }
+      
+      init() {
+        this.updateMetaTags();
+        this.updateShareLinks();
+        this.setupCopyButton();
+      }
+      
+      updateMetaTags() {
+        // Mettre à jour les meta tags Open Graph
+        this.setMetaTag('property', 'og:title', this.config.title);
+        this.setMetaTag('property', 'og:description', this.config.description);
+        this.setMetaTag('property', 'og:image', this.config.image);
+        this.setMetaTag('property', 'og:url', this.config.url);
+        
+        // Mettre à jour Twitter Card
+        this.setMetaTag('name', 'twitter:title', this.config.title);
+        this.setMetaTag('name', 'twitter:description', this.config.description);
+        this.setMetaTag('name', 'twitter:image', this.config.image);
+        
+        console.log('✅ Meta tags de partage mis à jour');
+      }
+      
+      setMetaTag(attribute, name, content) {
+        let meta = document.querySelector(`meta[${attribute}="${name}"]`);
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute(attribute, name);
+          document.head.appendChild(meta);
+        }
+        meta.content = content;
+      }
+      
+      updateShareLinks() {
+        const encodedUrl = encodeURIComponent(this.config.url);
+        const encodedTitle = encodeURIComponent(this.config.title);
+        const encodedDesc = encodeURIComponent(this.config.description);
+        
+        const shareUrls = {
+          facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
+          twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}&hashtags=${this.config.hashtags}`,
+          whatsapp: `https://api.whatsapp.com/send?text=${encodedTitle}%20-%20${encodedUrl}`,
+          linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`
+        };
+        
+        // Mettre à jour tous les boutons de partage
+        document.querySelectorAll('[data-share]').forEach(btn => {
+          const platform = btn.getAttribute('data-share');
+          if (shareUrls[platform]) {
+            btn.href = shareUrls[platform];
+            btn.target = '_blank';
+            btn.onclick = (e) => this.trackShare(platform);
+          }
+        });
+        
+        // Mettre à jour les boutons avec classes spécifiques (pour compatibilité)
+        document.querySelectorAll('.btn-facebook').forEach(btn => {
+          if (!btn.hasAttribute('data-share')) {
+            btn.href = shareUrls.facebook;
+            btn.target = '_blank';
+            btn.onclick = () => this.trackShare('facebook');
+          }
+        });
+        
+        document.querySelectorAll('.btn-twitter').forEach(btn => {
+          if (!btn.hasAttribute('data-share')) {
+            btn.href = shareUrls.twitter;
+            btn.target = '_blank';
+            btn.onclick = () => this.trackShare('twitter');
+          }
+        });
+        
+        document.querySelectorAll('.btn-whatsapp').forEach(btn => {
+          if (!btn.hasAttribute('data-share')) {
+            btn.href = shareUrls.whatsapp;
+            btn.target = '_blank';
+            btn.onclick = () => this.trackShare('whatsapp');
+          }
+        });
+      }
+      
+      setupCopyButton() {
+        const copyButtons = document.querySelectorAll('[data-action="copy-link"]');
+        copyButtons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.copyToClipboard(this.config.url);
+          });
+        });
+      }
+      
+      async copyToClipboard(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          this.showCopyMessage('✅ Lien copié dans le presse-papier !');
+          console.log('📋 Lien copié:', text);
+        } catch (err) {
+          console.error('Erreur lors de la copie:', err);
+          this.showCopyMessage('❌ Erreur lors de la copie', 'error');
+        }
+      }
+      
+      showCopyMessage(message, type = 'success') {
+        // Supprimer les messages précédents
+        document.querySelectorAll('.copy-message').forEach(el => el.remove());
+        
+        const alert = document.createElement('div');
+        alert.className = `copy-message alert alert-${type} alert-dismissible fade show`;
+        alert.innerHTML = `
+          ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        
+        document.body.appendChild(alert);
+        
+        // Auto-dismiss après 3 secondes
+        setTimeout(() => {
+          alert.remove();
+        }, 3000);
+      }
+      
+      trackShare(platform) {
+        console.log(`📤 Partage sur ${platform}:`, this.config.url);
+        // Ici vous pouvez ajouter Google Analytics ou autre suivi
+        // gtag('event', 'share', { method: platform, content_type: this.pageType });
+      }
+    }
+
+    // Initialisation principale
+    document.addEventListener('DOMContentLoaded', async function() {
+      console.log('🚀 Initialisation du système intelligent...');
+      
+      // 1. Gérer le favicon
+      const faviconManager = new SmartFavicon();
+      await faviconManager.init();
+      
+      // 2. Configurer le partage
+      const shareManager = new SmartShare();
+      shareManager.init();
+      
+      // 3. Ajouter des classes au body selon la page
+      if (APP_CONFIG.isMiGbanPage()) {
+        document.body.classList.add('mi-gban-theme');
+        console.log('🎨 Thème Mi-Gban activé');
+      }
+      
+      // 4. Mobile Navigation (existant)
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
       const navMenu = document.querySelector('#navmenu');
       const body = document.body;
@@ -656,7 +1004,6 @@
           this.classList.toggle('bi-list');
           this.classList.toggle('bi-x');
           
-          // Prevent body scroll when menu is open
           if (navMenu.classList.contains('active')) {
             body.style.overflow = 'hidden';
           } else {
@@ -665,73 +1012,13 @@
         });
       }
       
-      // Close mobile menu when clicking on a link
-      document.querySelectorAll('#navmenu a').forEach(link => {
-        link.addEventListener('click', () => {
-          navMenu.classList.remove('active');
-          if (mobileNavToggle) {
-            mobileNavToggle.classList.remove('bi-x');
-            mobileNavToggle.classList.add('bi-list');
-          }
-          body.style.overflow = '';
-        });
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!navMenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
-          navMenu.classList.remove('active');
-          if (mobileNavToggle) {
-            mobileNavToggle.classList.remove('bi-x');
-            mobileNavToggle.classList.add('bi-list');
-          }
-          body.style.overflow = '';
-        }
-      });
-      
-      // Initialize AOS animations
-      if (typeof AOS !== 'undefined') {
-        AOS.init({
-          duration: 600,
-          easing: 'ease-in-out',
-          once: true,
-          mirror: false
-        });
-      }
-      
-      // PureCounter initialization
-      if (typeof PureCounter !== 'undefined') {
-        new PureCounter();
-      }
-      
-      // Mobile carousel adjustments
-      function adjustCarouselForMobile() {
-        const carousel = document.getElementById('hero-carousel');
-        if (carousel && window.innerWidth < 768) {
-          const carouselItems = carousel.querySelectorAll('.carousel-item');
-          carouselItems.forEach(item => {
-            const img = item.querySelector('img');
-            if (img) {
-              img.style.objectFit = 'cover';
-              img.style.height = '400px';
-            }
-          });
-        }
-      }
-      
-      // Run on load and resize
-      window.addEventListener('load', adjustCarouselForMobile);
-      window.addEventListener('resize', adjustCarouselForMobile);
-      
-      // ===== ACTIVE MENU LINK ON SCROLL =====
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('#navmenu a[href^="#"]');
-      
-      // Function to update active link based on scroll position
-      function updateActiveLink() {
+      // 5. Navigation active (existant)
+      const updateActiveLink = () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('#navmenu a[href^="#"]');
         let current = '';
         const scrollY = window.pageYOffset;
-        const headerHeight = document.querySelector('.header').offsetHeight;
+        const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
         
         sections.forEach(section => {
           const sectionHeight = section.offsetHeight;
@@ -743,82 +1030,28 @@
           }
         });
         
-        // Update active class on navigation links
         navLinks.forEach(link => {
           link.classList.remove('active');
           const href = link.getAttribute('href').replace('#', '');
-          
           if (href === current) {
             link.classList.add('active');
           }
         });
-      }
+      };
       
-      // Update active link on scroll
       window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
       
-      // Update active link on page load
-      window.addEventListener('load', updateActiveLink);
-      
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          
-          // Skip if it's just "#"
-          if (href === '#') return;
-          
-          e.preventDefault();
-          
-          const targetElement = document.querySelector(href);
-          if (targetElement) {
-            // Calculate position with offset for fixed header
-            const headerHeight = document.querySelector('.header').offsetHeight;
-            const targetPosition = targetElement.offsetTop - headerHeight;
-            
-            // Smooth scroll
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-            
-            // Update URL without jumping
-            if (history.pushState) {
-              history.pushState(null, null, href);
-            } else {
-              location.hash = href;
-            }
-            
-            // Close mobile menu if open
-            if (window.innerWidth <= 992) {
-              navMenu.classList.remove('active');
-              if (mobileNavToggle) {
-                mobileNavToggle.classList.remove('bi-x');
-                mobileNavToggle.classList.add('bi-list');
-              }
-              body.style.overflow = '';
-            }
-          }
-        });
-      });
-      
-      // Handle initial hash in URL on page load
-      if (window.location.hash) {
-        setTimeout(() => {
-          const targetElement = document.querySelector(window.location.hash);
-          if (targetElement) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
-            const targetPosition = targetElement.offsetTop - headerHeight;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-          }
-        }, 100);
-      }
+      console.log('✅ Système intelligent initialisé avec succès');
     });
+
+    // Fonction globale pour copier (pour compatibilité)
+    window.copyToClipboard = function(text) {
+      const shareManager = new SmartShare();
+      shareManager.copyToClipboard(text || window.location.href);
+    };
   </script>
 
+  @yield('page-scripts')
 </body>
-
 </html>
