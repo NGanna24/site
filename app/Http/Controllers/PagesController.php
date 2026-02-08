@@ -25,10 +25,10 @@ class PagesController extends Controller
     $apkUrl = asset('apk/MIGBAN.apk');
 
     // QR Code vers la page MIGBAN
-    $pageUrl = "https://n-double.com/services/migban";
+    $pageUrl = "https://n-double.com/application/migban";
     $encodedUrl = urlencode($pageUrl);
 
-    $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={$encodedUrl}&color=EC681D&bgcolor=FFFFFF";
+    $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={$encodedUrl}&bgcolor=FFFFFF";
 
     return view('services.detaille', [
         'qrCodeUrl' => $qrCodeUrl,

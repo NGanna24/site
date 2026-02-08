@@ -19,7 +19,7 @@
 @section('page-styles')
 <style>
   /* Styles spécifiques à Mi-Gban */
-  .mi-gban-page {
+  .mi-gban-page { 
     --mi-gban-primary: #ec681d;
     --mi-gban-secondary: #d45810;
   }
@@ -173,8 +173,8 @@
 <main class="main" id="migban-page">
 
   <!-- Hero Section Mi-Gban -->
-  <section id="hero-migban" class="section">
-    <div class="container-fluid px-0 position-relative">
+  <section id="hero-migban" class="section " >
+    <div class="container-fluid px-0 position-relative overflow-hidden mt-5">
       <div class="row g-0 align-items-center min-vh-50">
         <div class="col-lg-6 order-lg-1 order-2 py-lg-0 py-5">
           <div class="px-4 px-lg-5 text-center text-lg-start">
@@ -188,6 +188,7 @@
             <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
               @if($apkExists)
               <a href="{{ $apkUrl }}" 
+              style="background-color: var(--mi-gban-primary); border-color: var(--mi-gban-primary);"
                  class="btn btn-primary btn-lg px-4 py-3 shadow"
                  download="MIGBAN.apk">
                 <i class="fas fa-download me-2"></i>Télécharger l'application
@@ -222,13 +223,13 @@
         <div class="col-lg-10">
           <div class="card border-0 shadow-lg overflow-hidden">
             <div class="row g-0">
-              <div class="col-md-6 bg-primary p-4 p-lg-5 d-flex align-items-center">
+              <div class="col-md-6  p-4 p-lg-5 d-flex align-items-center">
                 <div class="text-center text-white w-100">
                   <img src="{{ asset('visiteur/assets/img/migban/mi-gban-logo.png') }}" 
                        alt="Logo Mi-Gban" 
                        class="img-fluid mb-4"
                        style="max-height: 80px;">
-                  <h3 class="h2 mb-3">Téléchargez maintenant</h3>
+                  <h3 class="h2 mb-3 text-secondary" >Téléchargez maintenant</h3>
                   <p class="mb-4 opacity-90">Disponible gratuitement sur Android</p>
                   
                   @if($apkExists)
@@ -310,7 +311,7 @@
         <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 mb-3">
           <i class="fas fa-exclamation-triangle me-2"></i>Problématique
         </span>
-        <h2 class="display-5 fw-bold mb-3">Les défis immobiliers en <span class="text-primary">Côte d'Ivoire</span></h2>
+        <h2 class="display-5 fw-bold mb-3">Les défis immobiliers en Côte d'Ivoire</h2>
         <p class="lead text-muted">Nous identifions et résolvons les principaux obstacles</p>
       </div>
 
@@ -326,7 +327,7 @@
         
         @foreach($problems as $problem)
         <div class="col-md-6 col-lg-3">
-          <div class="card border-0 h-100 shadow-sm feature-card">
+          <div class="">
             <div class="card-body text-center p-4">
               <div class="icon-wrapper mb-4 mx-auto rounded-circle d-flex align-items-center justify-content-center" 
                    style="width: 70px; height: 70px; background: rgba(var(--bs-{{ $problem['color'] }}-rgb), 0.1);">
@@ -355,7 +356,7 @@
 
       <div class="row g-4 mb-5">
         <div class="col-lg-6">
-          <div class="card border-0 h-100 shadow-sm feature-card">
+          <div class="">
             <div class="card-header bg-primary bg-opacity-10 border-0 py-4">
               <div class="d-flex align-items-center">
                 <div class="flex-shrink-0">
@@ -397,7 +398,7 @@
         </div>
         
         <div class="col-lg-6">
-          <div class="card border-0 h-100 shadow-sm feature-card">
+          <div class="">
             <div class="card-header bg-info bg-opacity-10 border-0 py-4">
               <div class="d-flex align-items-center">
                 <div class="flex-shrink-0">
@@ -485,13 +486,13 @@
         <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 mb-3">
           Avantages
         </span>
-        <h2 class="display-5 fw-bold mb-3">Pourquoi choisir <span class="text-primary">Mi-Gban</span> ?</h2>
+        <h2 class="display-5 fw-bold mb-3">Pourquoi choisir Mi-Gban ?</h2>
         <p class="lead text-muted">Des bénéfices concrets pour tous les acteurs</p>
       </div>
 
       <div class="row g-4">
         <div class="col-lg-6">
-          <div class="benefit-card border-0 p-4 h-100 bg-white shadow-sm rounded">
+          <div class="">
             <div class="d-flex align-items-center mb-4">
               <div class="flex-shrink-0">
                 <div class="icon-wrapper bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
@@ -531,7 +532,7 @@
         </div>
         
         <div class="col-lg-6">
-          <div class="benefit-card border-0 p-4 h-100 bg-white shadow-sm rounded">
+          <div class="">
             <div class="d-flex align-items-center mb-4">
               <div class="flex-shrink-0">
                 <div class="icon-wrapper bg-info text-white rounded-circle d-flex align-items-center justify-content-center" 
@@ -694,6 +695,7 @@
             <div class="d-flex flex-column flex-md-row gap-3 justify-content-center mb-5">
               @if($apkExists)
               <a href="{{ $apkUrl }}" 
+                  style="background-color: var(--mi-gban-primary); border-color: var(--mi-gban-primary);"
                  class="btn btn-primary btn-lg px-5 py-3 shadow"
                  download="MIGBAN.apk">
                 <i class="fas fa-download fa-lg me-2"></i>
