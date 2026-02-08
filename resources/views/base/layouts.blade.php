@@ -18,7 +18,7 @@
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:title" content="NDOUBLE - Agence Digitale & Solutions IT Innovantes">
   <meta property="og:description" content="Agence digitale spécialisée en développement web, applications mobiles, design UX/UI et solutions informatiques innovantes à Bouaké">
-  <meta property="og:image" content="{{ asset('visiteur/assets/img/og-default.jpg') }}">
+  <meta property="og:image" content="{{ asset('visiteur/assets/img/logo.png') }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/jpeg">
