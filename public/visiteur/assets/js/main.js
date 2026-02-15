@@ -58,15 +58,26 @@
     });
   });
 
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
+/**
+ * Preloader - Version optimisée
+ */
+const preloader = document.querySelector('#preloader');
+if (preloader) {
+  // Cache après 1 seconde MAXIMUM, même si tout n'est pas chargé
+  setTimeout(() => {
+    preloader.classList.add('fade-out');
+    // Supprime après l'animation
+    setTimeout(() => preloader.remove(), 300);
+  }, 800);
+  
+  // Fallback au cas où (si tout charge très vite)
+  window.addEventListener('load', () => {
+    if (document.body.contains(preloader)) {
+      preloader.classList.add('fade-out');
+      setTimeout(() => preloader.remove(), 300);
+    }
+  });
+}
 
   /**
    * Scroll top button
@@ -191,4 +202,4 @@
 
   window.addEventListener("load", initSwiper);
 
-})();
+})(); 
