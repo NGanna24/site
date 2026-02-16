@@ -188,6 +188,7 @@
             <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
               @if($apkExists)
               <a href="{{ $apkUrl }}" 
+               
               style="background-color: var(--mi-gban-primary); border-color: var(--mi-gban-primary);"
                  class="btn btn-primary btn-lg px-4 py-3 shadow"
                  download="MIGBAN.apk">
@@ -200,7 +201,7 @@
             </div>
             
             <div class="mt-4 text-light">
-              <small><i class="fas fa-star text-warning me-1"></i> 4.8/5 • +100K téléchargements • Gratuit</small>
+              <small><i class="fas fa-star text-warning me-1"></i> {{ $nombreDeTelechargement }}+ téléchargements • Gratuit</small>
             </div>
           </div>
         </div>
