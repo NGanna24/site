@@ -15,10 +15,13 @@
 /node_modules
 /public/build
 /public/hot
+resources/views/administrateurs/*.blade.php
 /public/storage
+/public/admin
 /storage/*.key
 /storage/pail
 /vendor
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
