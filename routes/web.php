@@ -2,15 +2,17 @@
 
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\AdministrateursController;
+use App\Http\Controllers\ConfidentialiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'accueil'])->name('accueil');
 Route::get('/application/migban', [PagesController::class, 'serviceDetail'])->name('services.detail');
+Route::get('/application/migban/confidentialite', [ConfidentialiteController::class, 'index'])->name('confidentialite');
 
 // Route::get('/administration',[AdministrateursController::class,'accueil'])->name('admin.accueil');
 
 
-
+ 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
